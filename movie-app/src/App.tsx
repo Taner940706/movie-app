@@ -17,10 +17,17 @@ function App() {
       })
   }
 
+  const onRemoveHandler = (movieId: string) => {
+    setMovie((prevMovies) => {
+      return prevMovies.filter(movie => movie.id !== movieId);
+    })
+
+  }
+
   return (
     <div className="App">
       <AddNewMovie onAddMovie={onAddHandler}/>
-      <Movies items={movie}/>
+      <Movies onRemoveMovie={onRemoveHandler} items={movie}/>
     </div>
   );
 }
