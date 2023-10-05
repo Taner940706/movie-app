@@ -8,7 +8,7 @@ const AddNewMovie: React.FC<{onAddMovie: (name: string, poster: string, comment:
     const movieCommentInputRef = useRef<HTMLInputElement>(null);
 
     const submitHandler = (event: React.FormEvent) =>{
-        event.preventDefault;
+        event.preventDefault();
 
         const movieName = movieNameInputRef.current!.value;
         const moviePoster = moviePosterInputRef.current!.value;
@@ -23,13 +23,13 @@ const AddNewMovie: React.FC<{onAddMovie: (name: string, poster: string, comment:
 
     return (
         <form onSubmit={submitHandler}>
-            <label htmlFor="Name: "></label>
+            <label htmlFor="Name: ">Name: </label>
             <input type="text" ref={movieNameInputRef}/>
-            <label htmlFor="Poster: "></label>
+            <label htmlFor="Poster: ">Poster: </label>
             <input type="text" ref={moviePosterInputRef}/>
-            <label htmlFor="Comment: "></label>
+            <label htmlFor="Comment: ">Comment: </label>
             <input type="text" ref={movieCommentInputRef}/>
-            <label htmlFor="Score: "></label>
+            <label htmlFor="Score: ">Score: </label>
             <input type="number" ref={movieScoreInputRef}/>
             <button type="submit">Add Movie</button>
         </form>

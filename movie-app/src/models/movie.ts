@@ -2,10 +2,10 @@ class Movie{
     id: string;
     name: string;
     comment: string;
-    score: number;
+    score: string;
     src: string;
 
-    constructor(movieName: string, movieComment: string, movieScore: number, movieSrc: string){
+    constructor(movieName: string, movieSrc: string, movieComment: string, movieScore: string){
         this.name = movieName;
         this.comment = movieComment;
         this.score = movieScore;
