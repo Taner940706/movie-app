@@ -1,6 +1,6 @@
-import { useRef } from 'react'
+import React, { useRef } from 'react'
 
-const AddNewMovie = () => {
+const AddNewMovie: React.FC<{onAddMovie: (name: string, poster: string, comment: string, score: string) => void}> = (props) => {
 
     const movieNameInputRef = useRef<HTMLInputElement>(null);
     const moviePosterInputRef = useRef<HTMLInputElement>(null);
@@ -18,6 +18,7 @@ const AddNewMovie = () => {
         if (movieName.trim().length === 0 && moviePoster.trim().length === 0 && movieScore.trim().length === 0 && movieComment.trim().length === 0){
             return;
         }
+        props.onAddMovie(movieName, moviePoster, movieComment, movieScore)
     }
 
     return (
