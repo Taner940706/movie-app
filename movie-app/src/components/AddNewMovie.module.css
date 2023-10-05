@@ -1,0 +1,38 @@
+form{
+    border-style:groove;
+    margin-top: 20px;
+    margin-left: 50%;
+    display: inline-block;
+    background-color: bisque;
+    border-radius: 8px;
+    box-shadow: 5px 10px black;
+}
+
+form div{
+    margin-top: 10px;
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-bottom: 10px;
+}
+
+form input {
+    display: block;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    background-color: bisque;
+}
+
+form button {
+    margin-top: 10px;
+    display: inline-flex;
+    border-radius: 7px;
+    background-color: aqua;
+
+}
+
+form h1{
+    margin-left: 5px;
+    margin-right: 5px;
+    color:cornflowerblue;
+}

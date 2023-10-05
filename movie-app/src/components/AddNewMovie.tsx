@@ -1,4 +1,6 @@
-import React, { useRef } from 'react'
+import React, { useRef } from 'react';
+
+import classes from './AddNewMovie.module.css';
 
 const AddNewMovie: React.FC<{onAddMovie: (name: string, poster: string, comment: string, score: string) => void}> = (props) => {
 
@@ -22,7 +24,9 @@ const AddNewMovie: React.FC<{onAddMovie: (name: string, poster: string, comment:
     }
 
     return (
-        <form onSubmit={submitHandler}>
+        <form className={classes.form} onSubmit={submitHandler}>
+            <h1>Add New Movie</h1>
+            <div>
             <label htmlFor="Name: ">Name: </label>
             <input type="text" ref={movieNameInputRef}/>
             <label htmlFor="Poster: ">Poster: </label>
@@ -31,7 +35,8 @@ const AddNewMovie: React.FC<{onAddMovie: (name: string, poster: string, comment:
             <input type="text" ref={movieCommentInputRef}/>
             <label htmlFor="Score: ">Score: </label>
             <input type="number" ref={movieScoreInputRef}/>
-            <button type="submit">Add Movie</button>
+            <button type="submit">Add</button>
+            </div>
         </form>
     )
 
