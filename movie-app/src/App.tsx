@@ -10,7 +10,7 @@ function App() {
   const [movie, setMovie] = useState<Movie[]>([])
 
   const onAddHandler = (name: string, poster: string, comment: string, score: string) =>{
-      const newMovie = new Movie(name, poster, score, comment)
+      const newMovie = new Movie(name, poster,comment, score)
 
       setMovie((prevMovie) => {
         return prevMovie.concat(newMovie);
