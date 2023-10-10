@@ -4,3 +4,14 @@
     align-items: flex-end;
     
 }
+
+.error{
+    display: block;
+}
+.error-text {
+    color: red;
+    text-align: center;
+    font-weight: bold;
+    font-size: 60px;
+
+}
