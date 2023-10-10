@@ -36,3 +36,7 @@ form h1{
     margin-right: 5px;
     color:cornflowerblue;
 }
+
+form p{
+    color:red;
+}

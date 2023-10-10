@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 
 import classes from './AddNewMovie.module.css';
 
@@ -9,6 +9,9 @@ const AddNewMovie: React.FC<{onAddMovie: (name: string, poster: string, comment:
     const movieScoreInputRef = useRef<HTMLInputElement>(null);
     const movieCommentInputRef = useRef<HTMLInputElement>(null);
 
+    const [inputIsBlank, setInputIsBlank] = useState(false);
+
+
     const submitHandler = (event: React.FormEvent) =>{
         event.preventDefault();
 
@@ -17,10 +20,16 @@ const AddNewMovie: React.FC<{onAddMovie: (name: string, poster: string, comment:
         const movieScore = movieScoreInputRef.current!.value;
         const movieComment = movieCommentInputRef.current!.value;
 
-        if (movieName.trim().length === 0 && moviePoster.trim().length === 0 && movieScore.trim().length === 0 && movieComment.trim().length === 0){
+        if (movieName.trim().length === 0 || moviePoster.trim().length === 0 || movieScore.trim().length === 0 || movieComment.trim().length === 0){
+            setInputIsBlank(true);
             return;
         }
-        props.onAddMovie(movieName, moviePoster, movieComment, movieScore)
+        props.onAddMovie(movieName, moviePoster, movieComment, movieScore);
+        movieNameInputRef.current!.value = '';
+        moviePosterInputRef.current!.value = '';
+        movieScoreInputRef.current!.value = '';
+        movieCommentInputRef.current!.value = '';
+        setInputIsBlank(false);
     }
 
     return (
@@ -36,6 +45,7 @@ const AddNewMovie: React.FC<{onAddMovie: (name: string, poster: string, comment:
             <label htmlFor="Score: ">Score: </label>
             <input type="number" ref={movieScoreInputRef}/>
             <button type="submit">Add</button>
+            {inputIsBlank && <p className='error'>Please fill all fields!</p>}
             </div>
         </form>
     )
