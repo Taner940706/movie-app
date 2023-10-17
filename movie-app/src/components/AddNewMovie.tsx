@@ -2,12 +2,15 @@ import React, { useRef, useState } from 'react';
 
 import classes from './AddNewMovie.module.css';
 
-const AddNewMovie: React.FC<{onAddMovie: (name: string, poster: string, comment: string, score: string) => void}> = (props) => {
+const AddNewMovie: React.FC<{onAddMovie: (name: string, poster: string, comment: string, score: string, date: string, genre: string, duration: number) => void}> = (props) => {
 
     const movieNameInputRef = useRef<HTMLInputElement>(null);
     const moviePosterInputRef = useRef<HTMLInputElement>(null);
     const movieScoreInputRef = useRef<HTMLInputElement>(null);
     const movieCommentInputRef = useRef<HTMLInputElement>(null);
+    const movieDateInputRef = useRef<HTMLInputElement>(null);
+    const movieGenreInputRef = useRef<HTMLInputElement>(null);
+    const movieDurationInputRef = useRef<HTMLInputElement>(null);
 
     const [inputIsBlank, setInputIsBlank] = useState(false);
 
@@ -19,16 +22,23 @@ const AddNewMovie: React.FC<{onAddMovie: (name: string, poster: string, comment:
         const moviePoster = moviePosterInputRef.current!.value;
         const movieScore = movieScoreInputRef.current!.value;
         const movieComment = movieCommentInputRef.current!.value;
+        const movieDate = movieDateInputRef.current!.value;
+        const movieGenre = movieGenreInputRef.current!.value;
+        const movieDuration = Number(movieDurationInputRef.current!.value);
 
-        if (movieName.trim().length === 0 || moviePoster.trim().length === 0 || movieScore.trim().length === 0 || movieComment.trim().length === 0){
+        if (movieName.trim().length === 0 || moviePoster.trim().length === 0 || movieScore.trim().length === 0 || movieComment.trim().length === 0
+        || movieDate.length === 0 || movieGenre.length === 0 || String(movieDuration).length === 0){
             setInputIsBlank(true);
             return;
         }
-        props.onAddMovie(movieName, moviePoster, movieComment, movieScore);
+        props.onAddMovie(movieName, moviePoster, movieComment, movieScore, movieDate, movieGenre, movieDuration);
         movieNameInputRef.current!.value = '';
         moviePosterInputRef.current!.value = '';
         movieScoreInputRef.current!.value = '';
         movieCommentInputRef.current!.value = '';
+        movieDateInputRef.current!.value = '';
+        movieGenreInputRef.current!.value = '';
+        movieDurationInputRef.current!.value = '';
         setInputIsBlank(false);
     }
 
@@ -44,6 +54,12 @@ const AddNewMovie: React.FC<{onAddMovie: (name: string, poster: string, comment:
             <input type="text" ref={movieCommentInputRef}/>
             <label htmlFor="Score: ">Score: </label>
             <input type="number" ref={movieScoreInputRef}/>
+            <label htmlFor="Date: ">Date: </label>
+            <input type="date" ref={movieDateInputRef}/>
+            <label htmlFor="Genre: ">Genre: </label>
+            <input type="text" ref={movieGenreInputRef}/>
+            <label htmlFor="Duration: ">Duration: </label>
+            <input type="number" ref={movieDurationInputRef}/>
             <button type="submit">Add</button>
             {inputIsBlank && <p className='error'>Please fill all fields!</p>}
             </div>
