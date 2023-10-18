@@ -13,6 +13,7 @@ const AddNewMovie: React.FC<{onAddMovie: (name: string, poster: string, comment:
     const movieDurationInputRef = useRef<HTMLInputElement>(null);
 
     const [inputIsBlank, setInputIsBlank] = useState(false);
+    const [inputValueNumber, setInputValueNumber] = useState(false);
 
 
     const submitHandler = (event: React.FormEvent) =>{
@@ -31,6 +32,11 @@ const AddNewMovie: React.FC<{onAddMovie: (name: string, poster: string, comment:
             setInputIsBlank(true);
             return;
         }
+
+        if (Number(movieScore)<0 || Number(movieScore)>100){
+            setInputValueNumber(true);
+            return;
+        }
         props.onAddMovie(movieName, moviePoster, movieComment, movieScore, movieDate, movieGenre, movieDuration);
         movieNameInputRef.current!.value = '';
         moviePosterInputRef.current!.value = '';
@@ -41,6 +47,7 @@ const AddNewMovie: React.FC<{onAddMovie: (name: string, poster: string, comment:
         movieDurationInputRef.current!.value = '';
         setInputIsBlank(false);
     }
+
 
     return (
         <form className={classes.form} onSubmit={submitHandler}>
@@ -62,6 +69,7 @@ const AddNewMovie: React.FC<{onAddMovie: (name: string, poster: string, comment:
             <input type="number" ref={movieDurationInputRef}/>
             <button type="submit">Add</button>
             {inputIsBlank && <p className='error'>Please fill all fields!</p>}
+            {inputValueNumber && <p className='error'>Please fill fields with correct values!</p>}
             </div>
         </form>
     )
