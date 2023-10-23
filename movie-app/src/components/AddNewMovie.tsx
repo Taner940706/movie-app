@@ -54,19 +54,19 @@ const AddNewMovie: React.FC<{onAddMovie: (name: string, poster: string, comment:
             <h1>Add New Movie</h1>
             <div>
             <label htmlFor="Name: ">Name: </label>
-            <input type="text" ref={movieNameInputRef}/>
+            <input type="text" id="Name: " ref={movieNameInputRef}/>
             <label htmlFor="Poster: ">Poster: </label>
-            <input type="text" ref={moviePosterInputRef}/>
+            <input type="text" id="Poster: " ref={moviePosterInputRef}/>
             <label htmlFor="Comment: ">Comment: </label>
-            <input type="text" ref={movieCommentInputRef}/>
+            <input type="text" id='Comment: ' ref={movieCommentInputRef}/>
             <label htmlFor="Score: ">Score: </label>
-            <input type="number" ref={movieScoreInputRef}/>
+            <input type="number" id='Score: ' ref={movieScoreInputRef}/>
             <label htmlFor="Date: ">Date: </label>
-            <input type="date" ref={movieDateInputRef}/>
+            <input type="date" id='Date: ' ref={movieDateInputRef}/>
             <label htmlFor="Genre: ">Genre: </label>
-            <input type="text" ref={movieGenreInputRef}/>
+            <input type="text" id='Genre: ' ref={movieGenreInputRef}/>
             <label htmlFor="Duration: ">Duration: </label>
-            <input type="number" ref={movieDurationInputRef}/>
+            <input type="number" id='Duration: ' ref={movieDurationInputRef}/>
             <button type="submit">Add</button>
             {inputIsBlank && <p className='error'>Please fill all fields!</p>}
             {inputValueNumber && <p className='error'>Please fill fields with correct values!</p>}
