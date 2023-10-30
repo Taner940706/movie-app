@@ -31,6 +31,10 @@
     color: white;
 }
 
+.card button:hover{
+    background-color: rgb(104, 48, 207);
+}
+
 .card h1{
     color:teal;
     text-align: center;
@@ -55,7 +59,7 @@
     height: 20px;
     color: white;
     text-align: center;
-    margin-left: auto;
+    margin-left: 5px;
     margin-top: 30px;
 }
 
